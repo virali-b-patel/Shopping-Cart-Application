@@ -1,22 +1,37 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import "./ProductDisplay.css"
 import star_icon from "../Assets/star_icon.png"
 import star_dull_icon from "../Assets/star_dull_icon.png"
 import { ShopContext } from '../../Context/ShopContext'
+import { useParams } from 'react-router-dom'
+import { useEffect } from 'react'
 
 const ProductDisplay = (props) => {
 
+  const { productId } = useParams();
+
   const { product } = props
-  const { addToCart } = useContext(ShopContext)
+  const { increaseCartQuantity, cartItems } = useContext(ShopContext)
+  const [selectedSize, setSelectedSize] = useState(null);
+
+  const sizes = ["S", "M", "L", "XL", "XXL"]
+
+  const handleSizeClick = (size) => {
+    setSelectedSize(size);
+  };
+
+  useEffect(() => {
+    setSelectedSize(null)
+  }, [])
 
   return (
     <div className='productdisplay'>
       <div className='productdisplay-left'>
         <div className='productdisplay-img-list'>
-          <img src={product.image} alt />
-          <img src={product.image} alt />
-          <img src={product.image} alt />
-          <img src={product.image} alt />
+          <img src={product.image} alt='' />
+          <img src={product.image} alt='' />
+          <img src={product.image} alt='' />
+          <img src={product.image} alt='' />
         </div>
         <div className="productdisplay-img">
           <img className='productdisplay-main-img' src={product.image} alt='' />
@@ -40,14 +55,10 @@ const ProductDisplay = (props) => {
         <div className="productdisplay-right-size">
           <h1>Select Size</h1>
           <div className="productdisplay-right-sizes">
-            <div>S</div>
-            <div>M</div>
-            <div>L</div>
-            <div>XL</div>
-            <div>XXL</div>
+            {sizes.map((size, index) => <div key={index} onClick={() => handleSizeClick(size)} style={{ border: `2px solid ${size === selectedSize ? "blue" : "gray"}` }}>{size}</div>)}
           </div>
         </div>
-        <button onClick={() => { addToCart(product.id) }}>ADD TO CART</button>
+        <button onClick={() => { increaseCartQuantity(product.id) }}>{cartItems[productId] ? "REMOVE FROM CART" : "ADD TO CART"}</button>
         <p className="productdisplay-right-category"><span>Category : </span>Women, T-Shirt, Crop Top</p>
         <p className="productdisplay-right-category"><span>Tags : </span>Modern, Latest</p>
       </div>

@@ -1,27 +1,32 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import "./Navbar.css"
 import logo from "../Assets/logo.png"
 import cart_icon from "../Assets/cart_icon.png"
 import { Link } from 'react-router-dom'
 import { ShopContext } from '../../Context/ShopContext'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 const Navbar = () => {
 
-  const [menu, setMenu] = useState("shop")
-
+  const navigate = useNavigate()
+  const location = useLocation()
   const { getTotalCartItems } = useContext(ShopContext)
+
+  const onLogoClick = () => {
+    navigate("/")
+  }
 
   return (
     <div className='navbar'>
-      <div className='nav-logo'>
+      <div className='nav-logo' onClick={onLogoClick}>
         <img src={logo} alt='' />
         <p>SHOPPER</p>
       </div>
       <ul className='nav-menu'>
-        <li onClick={() => { setMenu("shop") }}><Link style={{ textDecoration: 'none' }} to='/'>Shop</Link>{menu === "shop" ? <hr /> : <></>}</li>
-        <li onClick={() => { setMenu("men") }}><Link style={{ textDecoration: 'none' }} to='/men'>Men</Link>{menu === "men" ? <hr /> : <></>}</li>
-        <li onClick={() => { setMenu("women") }}><Link style={{ textDecoration: 'none' }} to='/women'>Women</Link>{menu === "women" ? <hr /> : <></>}</li>
-        <li onClick={() => { setMenu("kid") }}><Link style={{ textDecoration: 'none' }} to='/kid'>Kids</Link>{menu === "kid" ? <hr /> : <></>}</li>
+        <li><Link style={{ textDecoration: 'none' }} to='/'>Shop</Link>{location.pathname === "/" ? <hr /> : <></>}</li>
+        <li><Link style={{ textDecoration: 'none' }} to='/men'>Men</Link>{location.pathname === "/men" ? <hr /> : <></>}</li>
+        <li><Link style={{ textDecoration: 'none' }} to='/women'>Women</Link>{location.pathname === "/women" ? <hr /> : <></>}</li>
+        <li><Link style={{ textDecoration: 'none' }} to='/kid'>Kids</Link>{location.pathname === "/kid" ? <hr /> : <></>}</li>
       </ul>
       <div className='nav-login-cart'>
         <Link to='/login'><button>Login</button></Link>
