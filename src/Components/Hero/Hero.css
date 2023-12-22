@@ -1,7 +1,7 @@
 .hero {
   display: flex;
   height: 90vh;
-  background: linear-gradient(180deg, #fde1ff, #e1ffea22 60%);
+  background: linear-gradient(180deg, rgb(234, 230, 230), #d4d5d422 60%);
 }
 
 .hero-left {

@@ -1,0 +1,39 @@
+.ldop {
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+  height: 40px;
+  width: 50%;
+  margin: 20px 0px 20px 200px;
+  padding: 20px 40px 20px 40px;
+  gap: 20px;
+}
+
+.ldop-change_btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 16px;
+  color: gray;
+}
+
+.ldop-change_btn div {
+  display: flex;
+}
+
+.ldop-change_btn button {
+  padding: 12px 30px;
+  border: 1px solid rgb(224, 222, 222);
+  color: blue;
+  background: transparent;
+  font-weight: 600;
+}
+
+.ldop-change_btn div p:first-child {
+  border: none;
+  outline: none;
+  color: blue;
+  background: rgb(184, 184, 239);
+  margin-right: 15px;
+  padding: 0px 7px;
+  font-weight: 400;
+}

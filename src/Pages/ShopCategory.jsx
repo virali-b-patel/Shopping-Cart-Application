@@ -6,12 +6,10 @@ import Item from '../Components/Items/Item'
 import { useLocation } from 'react-router-dom'
 
 const ShopCategory = (props) => {
-
+  console.log(props);
   const { all_product } = useContext(ShopContext)
   const location = useLocation()
-
   const [showDropdown, setShowDropdown] = useState(false)
-
   const [sortBy, setSortBy] = useState("all")
 
   const productHandler = () => {

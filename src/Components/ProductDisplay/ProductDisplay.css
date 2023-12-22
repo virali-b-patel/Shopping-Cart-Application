@@ -77,23 +77,23 @@
 .productdisplay-right-sizes div {
   padding: 18px 24px;
   background: #fbfbfb;
-  /* border: 1px solid #ebebeb; */
   border-radius: 6px;
   cursor: pointer;
 }
 
 .productdisplay-right button {
   padding: 20px 40px;
-  width: 200px;
+  width: 290px;
   font-size: 16px;
   font-weight: 600;
   color: white;
-  background: #ff4141;
+  background: #ff9f00;
   margin-bottom: 40px;
   border: none;
   outline: none;
   cursor: pointer;
 }
+
 
 .productdisplay-right-category {
   margin-top: 10px;

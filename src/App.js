@@ -10,6 +10,7 @@ import Footer from "./Components/Footer/Footer"
 import men_banner from "./Components/Assets/banner_mens.png"
 import women_banner from "./Components/Assets/banner_women.png"
 import kid_banner from "./Components/Assets/banner_kids.png"
+import BuyNow from './Pages/BuyNow';
 
 function App() {
   return (
@@ -22,9 +23,10 @@ function App() {
           <Route path='/women' element={<ShopCategory banner={women_banner} category="women" />} />
           <Route path='/kid' element={<ShopCategory banner={kid_banner} category="kid" />} />
           <Route path='/:category/:productId' element={<Product />} />
-          <Route path='/cart' element={<Cart />} />
           <Route path='/login' element={<LoginSignup />} />
           <Route path='/signup' element={<LoginSignup />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/buy' element={<BuyNow />} />
         </Routes>
         <Footer />
       </BrowserRouter>

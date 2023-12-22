@@ -7,6 +7,7 @@ const Breadcrums = (props) => {
 
   const { product } = props
   const navigate = useNavigate()
+
   return (
     <div className='breadcrums'>
       <div onClick={() => navigate("/")} style={{ cursor: "pointer" }}>SHOP</div> <img src={arrow_icon} alt='' /> <div onClick={() => navigate(`/${product.category}`)} style={{ cursor: "pointer" }}>{product.category}</div> <img src={arrow_icon} alt='' /> {product.name}

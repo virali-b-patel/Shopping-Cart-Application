@@ -29,7 +29,7 @@ const Navbar = () => {
         <li><Link style={{ textDecoration: 'none' }} to='/kid'>Kids</Link>{location.pathname === "/kid" ? <hr /> : <></>}</li>
       </ul>
       <div className='nav-login-cart'>
-        <Link to='/login'><button>Login</button></Link>
+        <Link to='/login'><button className={location.pathname === '/login' ? 'btn' : ""}>Login</button></Link>
         <Link to='/cart'><img src={cart_icon} alt='' /></Link>
         <div className='nav-cart-count'>{getTotalCartItems()}</div>
       </div>
