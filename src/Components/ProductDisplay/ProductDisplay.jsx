@@ -3,7 +3,7 @@ import "./ProductDisplay.css"
 import star_icon from "../Assets/star_icon.png"
 import star_dull_icon from "../Assets/star_dull_icon.png"
 import { ShopContext } from '../../Context/ShopContext'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import shopping_cart from '../Assets/shopping-cart.svg'
 
 const ProductDisplay = (props) => {
@@ -35,6 +35,7 @@ const ProductDisplay = (props) => {
     if (!selectedSize) {
       alert("Please select a size before adding to the cart");
     } else {
+      addToCart(productId)
       navigate("/buy")
     }
   }
