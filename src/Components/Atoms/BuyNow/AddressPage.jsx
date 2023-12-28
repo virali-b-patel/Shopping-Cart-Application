@@ -2,42 +2,79 @@ import React, { useState } from 'react'
 import '../../../Pages/CSS/BuyNow.css'
 
 
-const AddressPage = ({ addressButton, setAddressButton }) => {
+const AddressPage = ({ address, onClick }) => {
 
-  const [selectHomeDelivery, setSelectHomeDelivery] = useState(null)
-  const [selectWorkDelivery, setSelectWorkDelivery] = useState(null)
+  const [addressData, setAddressData] = useState({
+    name: address.name,
+    mobile: address.mobile,
+    pincode: address.pincode,
+    locality: address.locality,
+    address: address.address,
+    city: address.city,
+    state: address.state,
+    addressType: address.addressType,
+  });
 
-  const onSelectDeliverPlace = (e) => {
-    let name = e.target.name
-    setSelectHomeDelivery(name)
-    setSelectWorkDelivery(name)
-  }
+
+  const onSaveAndDeliver = () => {
+
+    // Validation logic
+    const isPincodeValid = /^\d{6}$/.test(addressData.pincode);
+    const isMobileValid = /^\d{10}$/.test(addressData.mobile);
+
+    if (isPincodeValid && isMobileValid) {
+      // TODO
+      const savedAddresses = JSON.parse(localStorage.getItem('savedAddresses')) || [];
+      savedAddresses.push(addressData);
+      localStorage.setItem('savedAddresses', JSON.stringify(savedAddresses));
+    } else {
+      alert('Invalid pin code or mobile number. Please check and try again.');
+    }
+    onClick()
+  };
 
   return (
-    <div className='address_page' style={{ position: "relative", padding: "10px 200px", boxShadow: "none", border: "none" }}>
+    <div className='address_page' style={{ position: 'relative', padding: '10px 200px', boxShadow: 'none', border: 'none' }}>
       <div className='address_page_detail'>
-        <input type="text" placeholder="Name" />
-        <input type="number" placeholder="10-digit mobile number" />
+        <input type='text' placeholder='Name' value={addressData.name} onChange={(e) => setAddressData({ ...addressData, name: e.target.value })} />
+        <input type='number' placeholder='10-digit mobile number' value={addressData.mobile} onChange={(e) => setAddressData({ ...addressData, mobile: e.target.value })} />
       </div>
       <div className='address_page_detail'>
-        <input type="number" placeholder="Mobile Number" />
-        <input type="text" placeholder="Locality" />
+        <input type='text' placeholder='Pincode' value={addressData.pincode} onChange={(e) => setAddressData({ ...addressData, pincode: e.target.value })} />
+        <input type='text' placeholder='Locality' value={addressData.locality} onChange={(e) => setAddressData({ ...addressData, locality: e.target.value })} />
       </div>
       <div className='address_page_detail'>
-        <textarea type="text" placeholder="Address(Area and Street)" />
+        <textarea type='text' placeholder='Address(Area and Street)' value={addressData.address} onChange={(e) => setAddressData({ ...addressData, address: e.target.value })} />
       </div>
       <div className='address_page_detail'>
-        <input type="text" placeholder="City/District/Town" />
-        <input type="text" placeholder="State" />
+        <input type='text' placeholder='City/District/Town' value={addressData.city} onChange={(e) => setAddressData({ ...addressData, city: e.target.value })} />
+        <input type='text' placeholder='State' value={addressData.state} onChange={(e) => setAddressData({ ...addressData, state: e.target.value })} />
       </div>
       <div className='address_page_addresstype'>
         <p>Address Type</p>
-        <input type="radio" name='delivery_home' checked={selectHomeDelivery === "delivery_home"} onChange={(e) => onSelectDeliverPlace(e)} /><label>Home(All day delivery)</label>
-        <input type="radio" name='delivery_work' checked={selectWorkDelivery === "delivery_work"} onChange={(e) => onSelectDeliverPlace(e)} /><label>Work(Delivery between 10 AM - 5 PM)</label>
+        <input
+          type='radio'
+          name='Home'
+          checked={addressData.addressType === 'Home'}
+          value={addressData.addressType}
+          onChange={() => {
+            setAddressData({ ...addressData, addressType: 'Home' });
+          }}
+        />
+        <label>Home(All day delivery)</label>
+        <input
+          type='radio'
+          name='Work'
+          value={addressData.addressType}
+          checked={addressData.addressType === 'Work'}
+          onChange={() => {
+            setAddressData({ ...addressData, addressType: 'Work' });
+          }}
+        />
+        <label>Work(Delivery between 10 AM - 5 PM)</label>
       </div>
       <div>
-        <button onClick={() => setAddressButton(!addressButton)}>SAVE AND DELIVERY HERE</button>
-        <button onClick={() => setAddressButton(!addressButton)}>CANCEL</button>
+        <button onClick={onSaveAndDeliver}>SAVE AND DELIVER HERE</button>
       </div>
     </div>
   )

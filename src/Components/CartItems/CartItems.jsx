@@ -3,7 +3,7 @@ import "./CartItems.css"
 import { ShopContext } from '../../Context/ShopContext'
 import remove_icon from "../Assets/cart_cross_icon.png"
 import { useNavigate } from 'react-router-dom'
-import empty_cart from '../Assets/empty-cart.webp'
+import EmptyCart from '../Atoms/empty-cart/EmptyCart'
 
 const CartItems = () => {
 
@@ -18,12 +18,7 @@ const CartItems = () => {
   return (
     < div >
       {getTotalCartItems() === 0 ?
-        <div className='emptycart'>
-          <img src={empty_cart} alt='' style={{ height: "162px" }} />
-          <p style={{ fontSize: "18px" }}>Your Cart is Empty!</p>
-          <p>Add items to it now.</p>
-          <button onClick={() => navigate("/")}>Shop Now</button>
-        </div> :
+        <EmptyCart /> :
         <div className='cartitems'>
           <div>
             <div className='cartitems-right'>

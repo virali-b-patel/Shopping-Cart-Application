@@ -4,7 +4,7 @@ import '../../../Pages/CSS/BuyNow.css'
 
 import remove_icon from '../../Assets/cart_cross_icon.png'
 
-const OrderSummaryPage = () => {
+const OrderSummaryPage = ({ onClick }) => {
 
   const { all_product, cartItems, decreaseCartQuantity, increaseCartQuantity, removeItemFromCart } = useContext(ShopContext)
 
@@ -37,7 +37,7 @@ const OrderSummaryPage = () => {
         return null;
       })}
       <div className='order-place-btn'>
-        <button>PLACE ORDER</button>
+        <button onClick={onClick}>PLACE ORDER</button>
       </div>
     </div>
   )
