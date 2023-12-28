@@ -11,11 +11,15 @@ const CartItems = () => {
   const { getTotalCartItems } = useContext(ShopContext)
   const navigate = useNavigate()
 
+  const handlePageChange = () => {
+    navigate("/buy")
+  }
+
   return (
     < div >
       {getTotalCartItems() === 0 ?
         <div className='emptycart'>
-          <img src={empty_cart} style={{ height: "162px" }} />
+          <img src={empty_cart} alt='' style={{ height: "162px" }} />
           <p style={{ fontSize: "18px" }}>Your Cart is Empty!</p>
           <p>Add items to it now.</p>
           <button onClick={() => navigate("/")}>Shop Now</button>
@@ -49,7 +53,7 @@ const CartItems = () => {
                 return null;
               })}
               <div className='order-place-btn'>
-                <button>PLACE ORDER</button>
+                <button onClick={handlePageChange}>PLACE ORDER</button>
               </div>
             </div>
           </div>
