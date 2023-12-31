@@ -9,8 +9,15 @@ import sbi_img from '../../Assets/sbi.svg'
 import axis_img from '../../Assets/axis.svg'
 import kmb_img from '../../Assets/kmb.svg'
 import lock_img from '../../Assets/lock.svg'
+import { useNavigate } from 'react-router-dom'
 
 const PaymentPage = () => {
+
+  const navigate = useNavigate()
+
+  const onClickAlertShow = () => {
+
+  }
 
   const { getTotalCartAmount } = useContext(ShopContext)
 
@@ -62,7 +69,7 @@ const PaymentPage = () => {
         <div style={{ display: "flex" }}>
           <input type="radio" name="upi_id" checked={selectUpiId === 'upi_id'} onChange={(e) => onSelectInnerRadio(e)} id="" /> <p>Your UPI ID</p>
         </div>
-        <p style={{ color: "gray", marginBottom: "15px" }}>Pay by any UPI app</p>
+        <button onClick={() => navigate("/OrderDetail")} className='payment_button' style={{ backgroundColor: selectPhonepe === 'phonepe' || selectUpiId === 'upi_id' ? "blue" : "gray" }} >PAY ₹{getTotalCartAmount()}</button>
       </div>}
       <hr />
       <div className='payment_wallets'>
@@ -81,9 +88,7 @@ const PaymentPage = () => {
         <div style={{ display: "flex" }}>
           <input type="radio" name="paytm_wallet" checked={selectUpiId === 'paytm_wallet'} onChange={(e) => onSelectInnerRadio(e)} id="" /> <p>Paytm Payments Bank Wallet</p> <br />
         </div>
-        <div className='payment_wallet_inputbtn' style={{ display: "flex" }}>
-          <input type="text" placeholder="Enter Paytm Payments Bank Wallet linked no." /> <button>CONTINUE</button>
-        </div>
+        <button onClick={() => navigate("/OrderDetail")} className='payment_button' style={{ backgroundColor: selectPhonepe === 'phonepe_wallet' || selectUpiId === 'paytm_wallet' ? "blue" : "gray" }} >PAY ₹{getTotalCartAmount()}</button>
       </div>}
       <hr />
       <div className='payment_C_D_ATM'>
@@ -96,7 +101,7 @@ const PaymentPage = () => {
           <div className='payment_C_D_ATM_inputbtn'>
             <input type="text" placeholder="Valid thru" /> <input type="text" placeholder="CVV" style={{ padding: "16px" }} />
           </div>
-          <button>PAY ₹{getTotalCartAmount()}</button>
+          <button onClick={() => navigate("/OrderDetail")} className='payment_button'>PAY ₹{getTotalCartAmount()}</button>
         </div>}
         <p>Add and secure cards as per RBI guidelines</p>
       </div>
@@ -137,7 +142,7 @@ const PaymentPage = () => {
               <p>Kotak Mahindra Bank</p>
             </div>
           </div>
-          <button>PAY ₹{getTotalCartAmount()}</button>
+          <button onClick={() => navigate("/OrderDetail")} className='payment_button' style={{ marginLeft: "33px", backgroundColor: selectHdfc === 'hdfc' || selectIcici === 'icici' || selectSbi === 'sbi' || selectAxis === 'axis' || selectKmb === 'kmb' ? "blue" : "gray" }}>PAY ₹{getTotalCartAmount()}</button>
         </div>}
         <p className='text'>This instrument has low success, use UPI or cards for better experience</p>
       </div>
@@ -149,7 +154,7 @@ const PaymentPage = () => {
         <div>
           <p style={{ fontSize: "17px", color: "black" }}>Cash on Delivery</p>
           <p>Pay advance of ₹148 now to use Cash on Delivery.</p>
-          <button>PAY ₹{getTotalCartAmount()}</button>
+          <button onClick={() => navigate("/OrderDetail")} className='payment_button'>PAY ₹{getTotalCartAmount()}</button>
         </div>
       </div>
     </div>

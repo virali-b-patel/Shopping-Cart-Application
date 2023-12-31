@@ -11,6 +11,7 @@ import men_banner from "./Components/Assets/banner_mens.png"
 import women_banner from "./Components/Assets/banner_women.png"
 import kid_banner from "./Components/Assets/banner_kids.png"
 import BuyNow from './Pages/BuyNow';
+import OrderDetail from './Components/Atoms/BuyNow/OrderDetail';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path='/signup' element={<LoginSignup />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/buy' element={<BuyNow />} />
+          <Route path='/orderDetail' element={<OrderDetail />} />
         </Routes>
         <Footer />
       </BrowserRouter>

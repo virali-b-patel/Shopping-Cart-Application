@@ -52,28 +52,7 @@ const CartItems = () => {
               </div>
             </div>
           </div>
-          <div className="cartitems-left">
-            <div className="cartitems-total">
-              <h1>Cart Totals</h1>
-              <div>
-                <div className="cartitems-total-item">
-                  <p>Subtotal</p>
-                  <p>₹{getTotalCartAmount()}</p>
-                </div>
-                <hr />
-                <div className="cartitems-total-item">
-                  <p>Shipping Fee</p>
-                  <p>Free</p>
-                </div>
-                <hr />
-                <div className="cartitems-total-item">
-                  <h3>Total</h3>
-                  <h3>₹{getTotalCartAmount()}</h3>
-                </div>
-              </div>
-              <button>PROCEED TO CHECKOUT</button>
-            </div>
-          </div>
+
         </div>
       }
     </ div >

@@ -27,13 +27,17 @@
 }
 
 .cartitems {
+  align-items: center;
   display: flex;
-  background: #f5faff;
-  margin-bottom: 50px;
+  justify-content: center;
+
+
 }
 
 .cartitems-right {
   margin: 100px 170px;
+  align-items: center;
+  justify-content: center;
   padding: 30px;
   border: 1px solid rgb(239, 234, 234);
   background-color: #fff;
@@ -46,7 +50,6 @@
   background: #e2e2e2;
   border: 0;
   box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
-
 }
 
 .cartitems-format-main {

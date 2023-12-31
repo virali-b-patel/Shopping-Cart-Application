@@ -1,16 +1,14 @@
 import React, { useContext } from 'react'
 import { ShopContext } from '../../../Context/ShopContext'
 import '../../../Pages/CSS/BuyNow.css'
-
 import remove_icon from '../../Assets/cart_cross_icon.png'
 
 const OrderSummaryPage = ({ onClick }) => {
 
   const { all_product, cartItems, decreaseCartQuantity, increaseCartQuantity, removeItemFromCart } = useContext(ShopContext)
 
-
   return (
-    <div className='cartitems-right' style={{ position: "relative", border: "none", boxShadow: "none", padding: "0px", margin: "auto", width: "auto%" }}>
+    <div className='cartitems-right' style={{ position: "relative", border: "none", boxShadow: "none", padding: "0px", margin: "auto", width: "auto" }}>
       <div className="cartitems-format-main">
         <p>Products</p>
         <p>Title</p>

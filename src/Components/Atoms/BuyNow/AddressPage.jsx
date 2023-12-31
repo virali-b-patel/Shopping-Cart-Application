@@ -5,14 +5,14 @@ import '../../../Pages/CSS/BuyNow.css'
 const AddressPage = ({ address, onClick }) => {
 
   const [addressData, setAddressData] = useState({
-    name: address.name,
-    mobile: address.mobile,
-    pincode: address.pincode,
-    locality: address.locality,
-    address: address.address,
-    city: address.city,
-    state: address.state,
-    addressType: address.addressType,
+    name: address.name || "",
+    mobile: address.mobile || "",
+    pincode: address.pincode || "",
+    locality: address.locality || "",
+    address: address.address || "",
+    city: address.city || "",
+    state: address.state || "",
+    addressType: address.addressType || "",
   });
 
 
@@ -24,9 +24,8 @@ const AddressPage = ({ address, onClick }) => {
 
     if (isPincodeValid && isMobileValid) {
       // TODO
-      const savedAddresses = JSON.parse(localStorage.getItem('savedAddresses')) || [];
-      savedAddresses.push(addressData);
-      localStorage.setItem('savedAddresses', JSON.stringify(savedAddresses));
+
+      localStorage.setItem('savedAddresses', JSON.stringify(addressData));
     } else {
       alert('Invalid pin code or mobile number. Please check and try again.');
     }
