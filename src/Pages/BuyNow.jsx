@@ -35,8 +35,6 @@ const BuyNow = () => {
     setStep(stepNumber);
   };
 
-  // const sequenceOrder = ["address", "locality", "city", "state", "pincode"];
-
   const onPlaceOrder = () => {
     handleStepChange(4)
   }
@@ -80,7 +78,7 @@ const BuyNow = () => {
               {step === 4 && <PaymentPage />}
             </div>
           </div>
-          <div style={{ width: '20%' }} className="cartitems-left" >
+          <div style={{ width: '20%', minWidth: "200px" }} className="cartitems-left" >
             <div className="cartitems-total">
               <h1>Cart Totals</h1>
               <div>
@@ -99,7 +97,6 @@ const BuyNow = () => {
                   <h3>₹{getTotalCartAmount()}</h3>
                 </div>
               </div>
-              <button>PROCEED TO CHECKOUT</button>
             </div>
           </div>
         </div> :

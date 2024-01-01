@@ -5,14 +5,14 @@ import '../../../Pages/CSS/BuyNow.css'
 const AddressPage = ({ address, onClick }) => {
 
   const [addressData, setAddressData] = useState({
-    name: address.name || "",
-    mobile: address.mobile || "",
-    pincode: address.pincode || "",
-    locality: address.locality || "",
-    address: address.address || "",
-    city: address.city || "",
-    state: address.state || "",
-    addressType: address.addressType || "",
+    name: address?.name || "",
+    mobile: address?.mobile || "",
+    pincode: address?.pincode || "",
+    locality: address?.locality || "",
+    address: address?.address || "",
+    city: address?.city || "",
+    state: address?.state || "",
+    addressType: address?.addressType || "",
   });
 
 

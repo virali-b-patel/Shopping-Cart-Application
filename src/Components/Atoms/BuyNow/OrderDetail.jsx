@@ -1,14 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React from 'react'
 import '../../../Pages/CSS/BuyNow.css'
-import { useNavigate } from 'react-router-dom'
-import { ShopContext } from '../../../Context/ShopContext'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 const OrderDetail = () => {
 
-  const { all_product, cartItems, getTotalCartItems } = useContext(ShopContext)
   const navigate = useNavigate()
-
-  //getTotalCartItems
+  const location = useLocation()
 
   return (
     <div>
@@ -23,15 +20,15 @@ const OrderDetail = () => {
               <p>Total</p>
             </div>
             <hr />
-            {all_product.map((e) => {
-              if (cartItems[e.id] > 0) {
+            {location.state.all_product.map((e) => {
+              if (location.state.cartItems[e.id] > 0) {
                 return <div>
                   <div className="cartitems-format cartitems-format-main" style={{ gridTemplateColumns: "grid-template-columns: 2fr 4fr 0.5fr 2fr 0.5fr" }}>
                     <img src={e.image} alt="" className="carticon-product-icon" />
                     <p>{e.name}</p>
                     <p>{e.new_price}</p>
-                    <button className="cartitems-quantity">{cartItems[e.id]}</button>
-                    <p>₹{e.new_price * cartItems[e.id]}</p>
+                    <button className="cartitems-quantity">{location.state.cartItems[e.id]}</button>
+                    <p>₹{e.new_price * location.state.cartItems[e.id]}</p>
                   </div>
                   <hr />
                 </div>

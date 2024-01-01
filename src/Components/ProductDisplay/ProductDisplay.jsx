@@ -82,7 +82,7 @@ const ProductDisplay = (props) => {
             }}>{size}</div>)}
           </div>
         </div>
-        <button onClick={handleAddToCartClick}><img src={shopping_cart} alt="" style={{ marginInline: "8px" }} /> {isItemInCart ? "REMOVE FROM CART" : "ADD TO CART"}</button>
+        <button onClick={handleAddToCartClick} style={{ backgroundColor: isItemInCart ? "red" : "orange" }} ><img src={shopping_cart} alt="" style={{ marginInline: "8px" }} />{isItemInCart ? "REMOVE FROM CART" : "ADD TO CART"}</button>
         <button onClick={handleBuyNow} style={{ background: "#fb641b" }}>BUY NOW</button>
         <p className="productdisplay-right-category"><span>Category : </span>Women, T-Shirt, Crop Top</p>
         <p className="productdisplay-right-category"><span>Tags : </span>Modern, Latest</p>

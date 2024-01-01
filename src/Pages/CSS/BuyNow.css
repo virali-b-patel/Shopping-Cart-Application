@@ -80,6 +80,7 @@
 
  .address_page_addresstype input {
    margin: 0 6px 20px 0;
+   cursor: pointer;
  }
 
  .address_page_addresstype label {
@@ -191,6 +192,7 @@
 
  .payment_C_D_ATM_option input {
    padding: 16px 60px;
+   color: gray;
    border: 1px solid rgb(215, 211, 211);
    border-radius: 2px;
    outline: none;

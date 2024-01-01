@@ -20,8 +20,8 @@ const OrderSummaryPage = ({ onClick }) => {
       <hr />
       {all_product.map((e, index) => {
         if (cartItems[e.id] > 0) {
-          return <div>
-            <div className="cartitems-format cartitems-format-main" key={index}>
+          return <div key={index}>
+            <div className="cartitems-format cartitems-format-main">
               <img src={e.image} alt="" className="carticon-product-icon" />
               <p>{e.name}</p>
               <p>{e.new_price}</p>

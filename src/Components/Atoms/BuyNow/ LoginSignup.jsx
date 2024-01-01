@@ -7,10 +7,10 @@ const LoginSignup = ({ isLogin, setIsLogin }) => {
     name: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    checkbox: false
   })
 
-  // const [isLogin, setIsLogin] = useState(false);
   const [isValid, setIsValid] = useState(false);
 
 
@@ -29,9 +29,11 @@ const LoginSignup = ({ isLogin, setIsLogin }) => {
     const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.email);
     const isPasswordValid = state.password.length >= 8;
     const isConfirmPasswordValid = state.confirmPassword === state.password;
+    const isCheckBox = state.checkbox
 
-    setIsValid(isEmailValid && isPasswordValid && isConfirmPasswordValid && isNameValid);
+    setIsValid(isEmailValid && isPasswordValid && isConfirmPasswordValid && isNameValid && isCheckBox);
   }, [state]);
+
 
 
   return (
@@ -49,10 +51,10 @@ const LoginSignup = ({ isLogin, setIsLogin }) => {
           <input type='password' placeholder='Enter Password' value={state.password} name='password' onChange={(e) => setState({ ...state, password: e.target.value })} />
         </>}
       </div>
-      <div className='loginsignup-agree'>
-        <input type='checkbox' name='' id='' />
+      {!isLogin && <><div className='loginsignup-agree'>
+        <input type='checkbox' style={{ cursor: "pointer" }} value={state.checkbox} name='' id='' onClick={() => setState({ ...state, checkbox: true })} />
         <p>By continuing, I agree to the terms of use & privacy policy. </p>
-      </div>
+      </div></>}
       <button style={{ cursor: isValid ? 'pointer' : 'not-allowed', background: isValid ? '#2874f0' : '#ff4141' }} disabled={!isValid} onClick={onChangeLogin}>
         Continue
       </button>
