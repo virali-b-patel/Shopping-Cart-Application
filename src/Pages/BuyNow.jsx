@@ -4,7 +4,7 @@ import "./CSS/LoginSignup.css"
 import "../Components/CartItems/CartItems.css"
 import { ShopContext } from '../Context/ShopContext'
 import SectionHeader from '../Components/Atoms/BuyNow/SectionHeader'
-import LoginSignup from '../Components/Atoms/BuyNow/ LoginSignup'
+import LoginSignup from '../Components/Atoms/BuyNow/LoginSignup'
 import AddressPage from '../Components/Atoms/BuyNow/AddressPage'
 import OrderSummaryPage from '../Components/Atoms/BuyNow/OrderSummaryPage'
 import PaymentPage from '../Components/Atoms/BuyNow/PaymentPage'
@@ -35,13 +35,7 @@ const BuyNow = () => {
     setStep(stepNumber);
   };
 
-  const onPlaceOrder = () => {
-    handleStepChange(4)
-  }
 
-  const onSaveAndDeliver = () => {
-    handleStepChange(3)
-  }
 
   const addNewAddress = () => {
     setIsAddNewAddress(true)
@@ -67,11 +61,11 @@ const BuyNow = () => {
                   <p>Add new address</p>
                 </div>
               </div>
-              {step === 2 && isAddNewAddress && <AddressPage address={addressData} onClick={onSaveAndDeliver} />}
+              {step === 2 && isAddNewAddress && <AddressPage address={addressData} onClick={() => handleStepChange(3)} />}
             </div>}
             <div className='ldop' style={{ backgroundColor: step === 3 ? "#f5faff" : "#fff" }}>
               <SectionHeader step={3} title={"ORDER SUMMARY"} onClick={() => handleStepChange(3)} />
-              {step === 3 && <OrderSummaryPage onClick={onPlaceOrder} />}
+              {step === 3 && <OrderSummaryPage onClick={() => handleStepChange(4)} />}
             </div>
             <div className='ldop' style={{ backgroundColor: step === 4 ? "#f5faff" : "#fff" }}>
               <SectionHeader step={4} title={"PAYMENT OPTION"} onClick={() => handleStepChange(4)} />
