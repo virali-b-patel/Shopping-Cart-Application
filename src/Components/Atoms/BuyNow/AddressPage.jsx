@@ -23,13 +23,10 @@ const AddressPage = ({ address, onClick }) => {
     const isMobileValid = /^\d{10}$/.test(addressData.mobile);
 
     if (isPincodeValid && isMobileValid) {
-      // TODO
-
-      localStorage.setItem('savedAddresses', JSON.stringify(addressData));
+      onClick(addressData)
     } else {
       alert('Invalid pin code or mobile number. Please check and try again.');
     }
-    onClick()
   };
 
   return (

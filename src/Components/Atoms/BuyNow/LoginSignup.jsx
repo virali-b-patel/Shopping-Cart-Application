@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../../../Pages/CSS/BuyNow.css'
 
-const LoginSignup = ({ isLogin, setIsLogin }) => {
+const LoginSignup = ({ isLogin, setIsLogin, onChangeLogin }) => {
 
   const [state, setState] = useState({
     name: '',
@@ -13,27 +13,29 @@ const LoginSignup = ({ isLogin, setIsLogin }) => {
 
   const [isValid, setIsValid] = useState(false);
 
-
-  const onChangeLogin = () => {
-    if (isLogin) {
-      console.log('Login Logic');
-    } else {
-      localStorage.setItem('userData', JSON.stringify(state));
-      setIsLogin(true)
-    }
-  };
-
   useEffect(() => {
     // Validation logic
-    const isNameValid = state.name.length > 4;
-    const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.email);
-    const isPasswordValid = state.password.length >= 8;
-    const isConfirmPasswordValid = state.confirmPassword === state.password;
-    const isCheckBox = state.checkbox
-
-    setIsValid(isEmailValid && isPasswordValid && isConfirmPasswordValid && isNameValid && isCheckBox);
+    if (isLogin) {
+      const isPasswordValid = state.password.length >= 8;
+      const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.email);
+      setIsValid(isEmailValid, isPasswordValid)
+    } else {
+      const isNameValid = state.name.length > 4;
+      const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.email);
+      const isPasswordValid = state.password.length >= 8;
+      const isConfirmPasswordValid = state.confirmPassword === state.password;
+      const isCheckBox = state.checkbox
+      setIsValid(isEmailValid && isPasswordValid && isConfirmPasswordValid && isNameValid && isCheckBox);
+    }
   }, [state]);
 
+  const onBtnClick = () => {
+    if (isLogin) {
+      onChangeLogin(state.email, state.password)
+    } else {
+      onChangeLogin(state)
+    }
+  }
 
 
   return (
@@ -55,7 +57,7 @@ const LoginSignup = ({ isLogin, setIsLogin }) => {
         <input type='checkbox' style={{ cursor: "pointer" }} value={state.checkbox} name='' id='' onClick={() => setState({ ...state, checkbox: true })} />
         <p>By continuing, I agree to the terms of use & privacy policy. </p>
       </div></>}
-      <button style={{ cursor: isValid ? 'pointer' : 'not-allowed', background: isValid ? '#2874f0' : '#ff4141' }} disabled={!isValid} onClick={onChangeLogin}>
+      <button style={{ cursor: isValid ? 'pointer' : 'not-allowed', background: isValid ? '#2874f0' : '#ff4141' }} disabled={!isValid} onClick={() => onBtnClick(state)}>
         Continue
       </button>
       <p className='loginsignup-login' onClick={() => setIsLogin(!isLogin)}>
